@@ -13,7 +13,9 @@ try:
 except ImportError:
   pass
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '/gpu:6'
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '0'
 logging.getLogger().setLevel('ERROR')
 warnings.filterwarnings('ignore', '.*box bound precision lowered.*')
 
