@@ -13,9 +13,9 @@ try:
 except ImportError:
   pass
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '/gpu:6'
+#os.environ['CUDA_VISIBLE_DEVICES'] = '/gpu:6'
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '0'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 logging.getLogger().setLevel('ERROR')
 warnings.filterwarnings('ignore', '.*box bound precision lowered.*')
 
@@ -48,7 +48,7 @@ def main():
   import tensorflow as tf
   tf.config.experimental_run_functions_eagerly(not config.jit)
   message = 'No GPU found. To actually train on CPU remove this assert.'
-  print('list_physical_devices(GPU):', tf.config.experimental.list_physical_devices('GPU'))
+ # print('list_physical_devices(GPU):', tf.config.experimental.list_physical_devices('GPU'))
   assert tf.config.experimental.list_physical_devices('GPU'), message
   for gpu in tf.config.experimental.list_physical_devices('GPU'):
     tf.config.experimental.set_memory_growth(gpu, True)
